@@ -1,16 +1,28 @@
 import {
   ArcRotateCamera,
   Engine,
-  EngineFactory,
   Scene,
   Vector3
 } from '@babylonjs/core'
+
+enum State {
+  START = 0,
+  MAIN_MENU = 1,
+  SOLO_MENU = 2,
+  MULTI_MENU = 3,
+  OPTIONS = 4,
+  GAME_SOLO = 5, 
+  GAME_MULTI = 6,
+  LOSE = 7,
+  WIN = 8
+}
 
 class Game {
   private _canvas: HTMLCanvasElement
   private _engine: Engine
   private _scene: Scene
-  
+  private _state: number = 0
+
   constructor() {
     this.createCanvas()
     this.initialize()
@@ -42,13 +54,24 @@ class Game {
     this.main()
   }
   
-  private main(): void {
+  private main(): void {  
+    this.start()
+
+    this._engine.runRenderLoop(() => {
+      switch (this._state) {
+        case State.START:
+          this._scene.render()
+          break
+        default: break
+      }
+      this._scene.render()
+    })
+  }
+
+  private start() {
     const camera: ArcRotateCamera = new ArcRotateCamera('camera', Math.PI, Math.PI, 1, Vector3.Zero())
     camera.attachControl(true)
 
-    this._engine.runRenderLoop(() => {
-      this._scene.render()
-    })
   }
 }
 
