@@ -1,0 +1,18 @@
+{
+  "name": "find-da-rabbitz",
+  "version": "1.0.0",
+  "description": "2.5D exploration game",
+  "main": "./src/app.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "video",
+    "game"
+  ],
+  "author": "NimiraTech and Pierre Billand",
+  "license": "ISC",
+  "devDependencies": {
+    "@babylonjs/core": "^7.22.3"
+  }
+}
