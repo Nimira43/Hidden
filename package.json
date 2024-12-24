@@ -1,0 +1,14 @@
+{
+  "name": "hidden",
+  "version": "1.0.0",
+  "main": "./src/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nick Rabone",
+  "license": "MIT",
+  "description": "2.5D exploration gamenp",
+  "devDependencies": {
+    "@babylonjs/core": "^7.41.1"
+  }
+}
