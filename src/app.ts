@@ -1,31 +1,51 @@
 import { ArcRotateCamera, Engine, Scene, Vector3 } from '@babylonjs/core'
 
 class Game {
-  private _canvas: HTMLElement
+  private _canvas: HTMLCanvasElement
   private _engine: Engine
   private _scene: Scene
 
   constructor() {
-    const canvas = document.createElement('canvas')
-    canvas.style.width = '100%'
-    canvas.style.height = '100%'
-    canvas.id = 'gameCanvas'
-    document.body.appendChild(canvas)
+    this.createCanvas()
+    this.initialise()
 
-    const engine = new Engine(canvas, true)
-    const scene = new Scene(engine)
+    const camera: ArcRotateCamera = new ArcRotateCamera('camera', Math.PI, Math.PI, 10, Vector3.Zero(), this._scene)
+    camera.attachControl(this._canvas, true)
 
-    const camera: ArcRotateCamera = new ArcRotateCamera('camera', Math.PI, Math.PI, 1, Vector3.Zero())
-    camera.attachControl(true)
-
-    engine.runRenderLoop(() => {
-      scene.render()
+    this._engine.runRenderLoop(() => {
+      this._scene.render()
     })
 
-    window.addEventListener('resize', () => {         
-      engine.resize() 
+    window.addEventListener('resize', () => {
+      this._engine.resize()
     })
+  }
+
+  private createCanvas(): void {
+    document.documentElement.style.overflow = 'hidden'
+    document.documentElement.style.width = '100%'
+    document.documentElement.style.height = '100%'
+    document.documentElement.style.margin = '0'
+    document.documentElement.style.padding = '0'
+    
+    document.body.style.overflow = 'hidden'
+    document.body.style.width = '100%'
+    document.body.style.height = '100%'
+    document.body.style.margin = '0'
+    document.body.style.padding = '0'
+
+    this._canvas = document.createElement('canvas')
+    this._canvas.style.width = '100%'
+    this._canvas.style.height = '100%'
+    this._canvas.id = 'gameCanvas'
+    document.body.appendChild(this._canvas)
+  }
+
+  private initialise(): void {
+    this._engine = new Engine(this._canvas, true)
+    this._scene = new Scene(this._engine)
   }
 }
 
-new Game ()
+new Game();
+
