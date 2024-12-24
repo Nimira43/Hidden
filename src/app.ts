@@ -1,6 +1,10 @@
 import { ArcRotateCamera, Engine, Scene, Vector3 } from '@babylonjs/core'
 
 class Game {
+  private _canvas: HTMLElement
+  private _engine: Engine
+  private _scene: Scene
+
   constructor() {
     const canvas = document.createElement('canvas')
     canvas.style.width = '100%'
