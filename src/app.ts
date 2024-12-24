@@ -1,4 +1,4 @@
-import { Engine, Scene } from '@babylonjs/core'
+import { ArcRotateCamera, Engine, Scene, Vector3 } from '@babylonjs/core'
 
 class Game {
   constructor() {
@@ -10,6 +10,11 @@ class Game {
 
     const engine = new Engine(canvas, true)
     const scene = new Scene(engine)
-    
+    const camera: ArcRotateCamera = new ArcRotateCamera('camera', Math.PI, Math.PI, 1, Vector3.Zero())
+
+
+    engine.runRenderLoop(() => {
+      scene.render()
+    })
   }
 }
