@@ -6,7 +6,7 @@ class Game {
     canvas.style.width = '100%'
     canvas.style.height = '100%'
     canvas.id = 'gameCanvas'
-    document.appendChild(canvas)
+    document.body.appendChild(canvas)
 
     const engine = new Engine(canvas, true)
     const scene = new Scene(engine)
@@ -17,5 +17,11 @@ class Game {
     engine.runRenderLoop(() => {
       scene.render()
     })
+
+    window.addEventListener('resize', () => {         
+      engine.resize() 
+    })
   }
 }
+
+new Game ()
