@@ -8,17 +8,6 @@ class Game {
   constructor() {
     this.createCanvas()
     this.initialise()
-
-    const camera: ArcRotateCamera = new ArcRotateCamera('camera', Math.PI, Math.PI, 10, Vector3.Zero(), this._scene)
-    camera.attachControl(this._canvas, true)
-
-    this._engine.runRenderLoop(() => {
-      this._scene.render()
-    })
-
-    window.addEventListener('resize', () => {
-      this._engine.resize()
-    })
   }
 
   private createCanvas(): void {
@@ -44,6 +33,20 @@ class Game {
   private initialise(): void {
     this._engine = new Engine(this._canvas, true)
     this._scene = new Scene(this._engine)
+    this.main()
+  }
+
+  private main(): void {
+    const camera: ArcRotateCamera = new ArcRotateCamera('camera', Math.PI, Math.PI, 10, Vector3.Zero(), this._scene)
+    camera.attachControl(this._canvas, true)
+
+    this._engine.runRenderLoop(() => {
+      this._scene.render()
+    })
+
+    window.addEventListener('resize', () => {
+      this._engine.resize()
+    })
   }
 }
 
