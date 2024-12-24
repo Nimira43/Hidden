@@ -9,6 +9,10 @@
   "license": "MIT",
   "description": "2.5D exploration gamenp",
   "devDependencies": {
-    "@babylonjs/core": "^7.41.1"
+    "@babylonjs/core": "^7.41.1",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.7.2",
+    "webpack": "^5.97.1",
+    "webpack-cli": "^6.0.1"
   }
 }
