@@ -10,8 +10,9 @@ class Game {
 
     const engine = new Engine(canvas, true)
     const scene = new Scene(engine)
-    const camera: ArcRotateCamera = new ArcRotateCamera('camera', Math.PI, Math.PI, 1, Vector3.Zero())
 
+    const camera: ArcRotateCamera = new ArcRotateCamera('camera', Math.PI, Math.PI, 1, Vector3.Zero())
+    camera.attachControl(true)
 
     engine.runRenderLoop(() => {
       scene.render()
