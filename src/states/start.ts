@@ -30,4 +30,10 @@ export async function start(
     sceneToLoad
   )
   camera.attachControl(true)
+
+  await sceneToLoad.whenReadyAsync()
+  sceneToLoad.attachControl()
+  engine.hideLoadingUI()
+  status._scene.dispose()
+  status._scene = sceneToLoad
 }
