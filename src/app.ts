@@ -11,8 +11,11 @@ class App {
   }
 
   private async _initialise(): Promise<void> {
+    this._engine = (await EngineFactory.CreateAsync(this._canvas, undefined)) as Engine
+    this._scene = new Scene(this._engine)
     await this._main()
   }
+  
   private _createCanvas(): HTMLCanvasElement {
     document.documentElement.style['overflow'] = 'hidden'
     document.documentElement.style.overflow = 'hidden'
