@@ -13,7 +13,7 @@ class App {
   private async _initialise(): Promise<void> {
     await this._main()
   }
-  private async _createCanvas(): HTMLCanvasElement {
+  private _createCanvas(): HTMLCanvasElement {
     document.documentElement.style['overflow'] = 'hidden'
     document.documentElement.style.overflow = 'hidden'
     document.documentElement.style.width = '100%'
