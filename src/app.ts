@@ -61,7 +61,18 @@ export class Game {
   }
 
   private main(): void {
-    
+    this._start(this._canvas, this._engine, this._status)
+    this._engine.runRenderLoop(() => {
+      switch (this._state) {
+        case State.START: 
+        this._status._scene.render()
+          break
+        default: break
+      }
+      this._status._scene.render()
+    })
   }
 }
+
+new Game()
 
