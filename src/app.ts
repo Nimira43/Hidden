@@ -1,5 +1,4 @@
 import { Engine, Scene } from '@babylonjs/core'
-
 import { start } from './states/start'
 
 enum State {
@@ -46,7 +45,6 @@ export class Game {
     document.body.style.height = '100%'
     document.body.style.margin = '0'
     document.body.style.padding = '0'
-
     this._canvas = document.createElement('canvas')
     this._canvas.style.width = '100%'
     this._canvas.style.height = '100%'
@@ -75,4 +73,3 @@ export class Game {
 }
 
 new Game()
-
