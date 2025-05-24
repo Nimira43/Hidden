@@ -11,11 +11,15 @@ class App {
     this._initialise()
   }
 
-  private async _initialise(): Promise<> {
-    await this.main()
+  private async _initialise(): Promise<void> {
+    await this._main()
   }
   private async _createCanvas(): HTMLCanvasElement {
     return this._canvas
   }
+  private async _main(): Promise<void> {
 
+  }
 }
+
+new App()
