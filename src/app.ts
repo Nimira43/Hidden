@@ -38,7 +38,21 @@ class App {
     return this._canvas
   }
   private async _main(): Promise<void> {
-
+    let camera: ArcRotateCamera = new ArcRotateCamera(
+      'Camera',
+      Math.PI / 2,
+      Math.PI / 2,
+      2,
+      Vector3.Zero(),
+      this._scene
+    )
+    camera.attachControl(this._canvas, true)
+    this._engine.runRenderLoop(() => {
+      this._scene.render()
+    })
+    window.addEventListener('resize', () => {
+      this._engine.resize()
+    })
   }
 }
 
