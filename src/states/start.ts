@@ -20,4 +20,14 @@ export async function start(
   background.color = '#9dc9b5'
   background.background = '#9dc9b5'
   guiMenu.addControl(background)
+
+  const camera: ArcRotateCamera = new ArcRotateCamera(
+    'camera',
+    Math.PI,
+    Math.PI,
+    1,
+    Vector3.Zero(),
+    sceneToLoad
+  )
+  camera.attachControl(true)
 }
