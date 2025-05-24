@@ -15,7 +15,7 @@ class App {
     this._scene = new Scene(this._engine)
     await this._main()
   }
-  
+
   private _createCanvas(): HTMLCanvasElement {
     document.documentElement.style['overflow'] = 'hidden'
     document.documentElement.style.overflow = 'hidden'
@@ -32,7 +32,7 @@ class App {
     this._canvas = document.createElement('canvas')
     this._canvas.style.width = '100%'
     this._canvas.style.height = '100%'
-    this._canvas.style.id = 'gameCanvas'
+    this._canvas.id = 'gameCanvas'
     document.body.appendChild(this._canvas)
 
     return this._canvas
