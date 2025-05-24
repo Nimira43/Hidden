@@ -14,8 +14,8 @@ export async function start(
   let sceneToLoad = new Scene(engine)
   const guiMenu = AdvancedDynamicTexture.CreateFullscreenUI('ui', true, sceneToLoad)
   const background = new Rectangle('background')
-  background.color = '#9dc9b5'
-  background.background = '#9dc9b5'
+  background.color = '#a9e4de'
+  background.background = '#a9e4de'
   guiMenu.addControl(background)
   const camera: ArcRotateCamera = new ArcRotateCamera(
     'camera',
