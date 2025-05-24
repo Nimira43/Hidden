@@ -1,7 +1,7 @@
 import { Engine, EngineFactory, Scene, ArcRotateCamera, Vector3 } from '@babylonjs/core'
 
 
-class App {
+export class Game {
   private _canvas: HTMLCanvasElement
   private _engine: Engine
   private _scene: Scene
@@ -17,7 +17,7 @@ class App {
     await this._main()
   }
 
-  private _createCanvas(): HTMLCanvasElement {
+  private createCanvas(): void {
     document.documentElement.style['overflow'] = 'hidden'
     document.documentElement.style.overflow = 'hidden'
     document.documentElement.style.width = '100%'
@@ -35,8 +35,6 @@ class App {
     this._canvas.style.height = '100%'
     this._canvas.id = 'gameCanvas'
     document.body.appendChild(this._canvas)
-
-    return this._canvas
   }
   private async _main(): Promise<void> {
     let camera: ArcRotateCamera = new ArcRotateCamera(
@@ -57,4 +55,3 @@ class App {
   }
 }
 
-new App()
