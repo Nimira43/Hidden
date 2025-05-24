@@ -1,4 +1,4 @@
-import { Engine, EngineFactory, Scene, ArcRotateCamera, Vector3 } from '@babylonjs/core'
+import { Engine, Scene } from '@babylonjs/core'
 
 import { start } from './states/start'
 
@@ -61,21 +61,7 @@ export class Game {
   }
 
   private main(): void {
-    // let camera: ArcRotateCamera = new ArcRotateCamera(
-    //   'Camera',
-    //   Math.PI / 2,
-    //   Math.PI / 2,
-    //   2,
-    //   Vector3.Zero(),
-    //   this._scene
-    // )
-    // camera.attachControl(this._canvas, true)
-    // this._engine.runRenderLoop(() => {
-    //   this._scene.render()
-    // })
-    // window.addEventListener('resize', () => {
-    //   this._engine.resize()
-    // })
+    
   }
 }
 
