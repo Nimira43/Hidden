@@ -1,7 +1,6 @@
 import { Engine, EngineFactory, Scene, ArcRotateCamera, Vector3 } from '@babylonjs/core'
 
 class App {
-
   private _canvas: HTMLCanvasElement
   private _engine: Engine
   private _scene: Scene
@@ -26,6 +25,12 @@ class App {
     document.body.style.height = '100%'
     document.body.style.margin = '0'
     document.body.style.padding = '0'
+
+    this._canvas = document.createElement('canvas')
+    this._canvas.style.width = '100%'
+    this._canvas.style.height = '100%'
+    this._canvas.style.id = 'gameCanvas'
+    document.body.appendChild(this._canvas)
 
     return this._canvas
   }
