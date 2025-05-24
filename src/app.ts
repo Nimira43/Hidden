@@ -1,20 +1,37 @@
 import { Engine, EngineFactory, Scene, ArcRotateCamera, Vector3 } from '@babylonjs/core'
 
+import { start } from './states/start'
+
+enum State {
+  START = 0,
+  MAIN_MENU = 1,
+  SOLO_MENU = 2,
+  MULTI_MENU = 3,
+  OPTIONS = 4,
+  GAME_SOLO = 5,
+  GAME_MULTI = 6,
+  LOSE = 7,
+  WIN = 8
+}
+
+export type Status = {
+  _scene: Scene,
+  _state: number
+}
 
 export class Game {
   private _canvas: HTMLCanvasElement
   private _engine: Engine
-  private _scene: Scene
+  private _status: Status = {
+    _scene: null,
+    _state: 0
+  }
+  private _state: number = 0
+  protected _start = start
 
   constructor() {
-    this._canvas = this._createCanvas()
-    this._initialise()
-  }
-
-  private async _initialise(): Promise<void> {
-    this._engine = (await EngineFactory.CreateAsync(this._canvas, undefined)) as Engine
-    this._scene = new Scene(this._engine)
-    await this._main()
+    this.createCanvas()
+    this.initialise()
   }
 
   private createCanvas(): void {
@@ -36,22 +53,29 @@ export class Game {
     this._canvas.id = 'gameCanvas'
     document.body.appendChild(this._canvas)
   }
-  private async _main(): Promise<void> {
-    let camera: ArcRotateCamera = new ArcRotateCamera(
-      'Camera',
-      Math.PI / 2,
-      Math.PI / 2,
-      2,
-      Vector3.Zero(),
-      this._scene
-    )
-    camera.attachControl(this._canvas, true)
-    this._engine.runRenderLoop(() => {
-      this._scene.render()
-    })
-    window.addEventListener('resize', () => {
-      this._engine.resize()
-    })
+
+  private initialise(): void {
+    this._engine = new Engine(this._canvas, true)
+    this._status._scene = new Scene(this._engine)
+    this.main()
+  }
+
+  private main(): void {
+    // let camera: ArcRotateCamera = new ArcRotateCamera(
+    //   'Camera',
+    //   Math.PI / 2,
+    //   Math.PI / 2,
+    //   2,
+    //   Vector3.Zero(),
+    //   this._scene
+    // )
+    // camera.attachControl(this._canvas, true)
+    // this._engine.runRenderLoop(() => {
+    //   this._scene.render()
+    // })
+    // window.addEventListener('resize', () => {
+    //   this._engine.resize()
+    // })
   }
 }
 
